@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- scan:配置文件如果发生改变，将会重新加载，默认值为true -->
+<configuration scan="true" scanPeriod="10 seconds">
+	<property scope="context" name="LOG_HOME" value="logs"/>
+	<property scope="context" name="PROJECT_NAME" value="triscit"/>
+	<property scope="context" name="LOG_PATTERN" value="[%date{HH:mm:ss SSS}] [%thread %-5level]  %class{12}.%M [%L] - %msg%n"/>
+	<springProperty scope="context" name="LOG_HOME" source="logging.path" defaultValue="logs"/>
+	<springProperty scope="context" name="PROJECT_NAME" source="spring.application.name" defaultValue="triscit"/>
+
+	<!-- 将日志文件 -->
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+			<charset>utf-8</charset>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${PROJECT_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50 MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<!--最多保留30天log-->
+            <maxHistory>30</maxHistory>
+		</rollingPolicy>
+	</appender>
+	<!-- 将日志错误文件-->
+	<appender name="file_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+			<charset>utf-8</charset>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${PROJECT_NAME}-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50 MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<!--最多保留30天log-->
+            <maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+	</appender>
+	<!-- 将日志写入控制台 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+			<!--<charset>utf-8</charset>-->
+		</encoder>
+	</appender>
+
+	<logger name="org.springframework.boot" level="INFO" />
+	<logger name="org.springframework.web" level="INFO" />
+	<logger name="com.triscit" level="debug" />
+	<root level="DEBUG">
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+	</root>
+	<root level="ERROR">
+		<appender-ref ref="file_error" />
+	</root>
+
+</configuration>
