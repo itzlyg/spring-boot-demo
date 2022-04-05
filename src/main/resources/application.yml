@@ -4,3 +4,23 @@ server:
 spring:
   application:
     name: triscit
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/work_flow?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+    username: root
+    password: root
+
+
+# flowable配置
+flowable:
+  check-process-definitions: true #是否需要自动部署流程定义。
+  async-executor-activate: false # 是否启用异步执行器。'
+  deploy-resources: true #是否部署资源。默认值为''true''。'
+  deployment-name: SpringBootAutoDeployment #CMMN资源部署的名字。'
+  custom-mybatis-x-m-l-mappers: # 需要添加至引擎的自定义Mybatis XML映射的路径。'
+  database-schema: # 如果数据库返回的元数据不正确，可以在这里设置schema用于检测/生成表。'
+  database-schema-update: true # 数据库schema更新策略。'
+  db-history-used: true # 是否要使用db历史。'
+  process-definition-location-prefix: classpath*:/processes/ # 自动部署时查找流程的目录。'
+  process-definition-location-suffixes: # **.bpmn20.xml,**.bpmn # ''processDefinitionLocationPrefix''路径下需要部署的文件的后缀（扩展名）。'
