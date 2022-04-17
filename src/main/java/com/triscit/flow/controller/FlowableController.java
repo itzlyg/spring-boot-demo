@@ -12,6 +12,7 @@ import org.flowable.task.api.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -72,16 +73,13 @@ public class FlowableController {
     @PostMapping(value = "/flow_img/{processId}")
     public void genProcessDiagram(HttpServletResponse response, @PathVariable String processId) throws Exception {
         byte[] bs = imageService.generateImageByProcInstId(processId);
-        OutputStream out = null;
-        try {
+        MediaType type = MediaType.IMAGE_PNG;
+        response.setContentType(type.toString());
+        try (OutputStream out = response.getOutputStream()) {
             BufferedImage image = ImageIO.read(new ByteArrayInputStream(bs));
-            out = response.getOutputStream();
-            response.setContentType("image/png");
-            ImageIO.write(image, "png", out);
-        } finally {
-            if (out != null) {
-                out.close();
-            }
+            ImageIO.write(image, type.getSubtype(), out);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
