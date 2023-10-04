@@ -8,6 +8,7 @@ import com.triscit.flow.vo.request.FlowParamsRequest;
 import com.triscit.flow.vo.request.FlowStartRequest;
 import com.triscit.flow.vo.request.FlowSubmitRequest;
 import com.triscit.util.JsonUtil;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.task.api.Task;
@@ -25,10 +26,10 @@ import java.util.Map;
 @Service
 public class FlowDataServiceImpl extends ServiceFactory implements FlowDataService  {
 
-    @Autowired
+    @Resource
     private FlowInstance flowInstance;
 
-    @Autowired
+    @Resource
     private FlowTaskQuery flowTaskQuery;
 
     @Override

@@ -2,6 +2,7 @@ package com.triscit.flow.service.impl;
 
 
 import com.triscit.flow.service.ImageService;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.flowable.bpmn.model.BpmnModel;
 import org.flowable.bpmn.model.FlowElement;
@@ -36,11 +37,11 @@ public class ImageServiceImpl implements ImageService {
 
     protected static Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);
 
-    @Autowired
+    @Resource
     private RepositoryService repositoryService;
-    @Autowired
+    @Resource
     private HistoryService historyService;
-    @Autowired
+    @Resource
     private RuntimeService runtimeService;
 
     /**

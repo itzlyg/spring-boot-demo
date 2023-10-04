@@ -5,6 +5,7 @@ import com.triscit.flow.service.FlowDataService;
 import com.triscit.flow.service.ImageService;
 import com.triscit.flow.vo.request.FlowExamineRequest;
 import com.triscit.flow.vo.request.FlowStartRequest;
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.flowable.engine.TaskService;
@@ -35,16 +36,16 @@ import java.util.List;
 @RequestMapping("/api/flowable")
 public class FlowableController {
 
-    @Autowired
+    @Resource
     private TaskService taskService;
 
-    @Autowired
+    @Resource
     private ImageService imageService;
 
-    @Autowired
+    @Resource
     private FlowDataService flowDataService;
 
-    private Logger log = LoggerFactory.getLogger(FlowableController.class);
+    private final Logger log = LoggerFactory.getLogger(FlowableController.class);
 
 
     @PostMapping("/start_flow")

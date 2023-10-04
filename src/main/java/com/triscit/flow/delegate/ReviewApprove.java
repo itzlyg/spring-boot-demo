@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  * @Date 2022/4/4 21:16
  */
 public class ReviewApprove implements JavaDelegate {
-    private Logger log = LoggerFactory.getLogger(ReviewApprove.class);
+    private final Logger log = LoggerFactory.getLogger(ReviewApprove.class);
     @Override
     public void execute(DelegateExecution delegateExecution) {
         //可以发送消息给某人

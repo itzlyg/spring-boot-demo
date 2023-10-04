@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  * @Date 2022/4/4 21:16
  */
 public class ReviewNoApprove implements JavaDelegate {
-    private Logger log = LoggerFactory.getLogger(ReviewNoApprove.class);
+    private final Logger log = LoggerFactory.getLogger(ReviewNoApprove.class);
 
     @Override
     public void execute(DelegateExecution delegateExecution) {

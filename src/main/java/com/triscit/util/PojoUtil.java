@@ -26,10 +26,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class PojoUtil {
 
-    private static Map<String, BeanCopier> beanCopierMap = new ConcurrentHashMap<>();
+    private static final Map<String, BeanCopier> BEAN_COPIER_MAP = new ConcurrentHashMap<>();
 
     /** 日志 */
-    private static Logger logger = LoggerFactory.getLogger(PojoUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(PojoUtil.class);
 
     /**
      * 复制list
@@ -107,11 +107,11 @@ public class PojoUtil {
     private static <R, T> BeanCopier beanCopier (Class<R> r, Class<T> t){
         String beanKey = r.toString() + t.toString();
         BeanCopier copier;
-        if (beanCopierMap.containsKey(beanKey)) {
-            copier = beanCopierMap.get(beanKey);
+        if (BEAN_COPIER_MAP.containsKey(beanKey)) {
+            copier = BEAN_COPIER_MAP.get(beanKey);
         } else {
             copier = BeanCopier.create(r, t, false);
-            beanCopierMap.put(beanKey, copier);
+            BEAN_COPIER_MAP.put(beanKey, copier);
         }
         return copier;
     }
@@ -150,8 +150,7 @@ public class PojoUtil {
      * @throws InstantiationException
      */
     public static <T> T newInstance(Class<T> clazz) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        T t = clazz.getDeclaredConstructor().newInstance();
-        return t;
+        return clazz.getDeclaredConstructor().newInstance();
     }
 
 }

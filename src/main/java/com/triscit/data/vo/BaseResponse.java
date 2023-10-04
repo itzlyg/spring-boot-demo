@@ -12,8 +12,8 @@ import java.io.Serializable;
 @Schema(description = "返回参数")
 public class BaseResponse<T> implements Serializable {
 
-    public static<T> BaseResponse ok (T t){
-        BaseResponse response = new BaseResponse();
+    public static<T> BaseResponse<T> ok (T t){
+        BaseResponse<T> response = new BaseResponse<T>();
         response.setData(t);
         return response;
     }

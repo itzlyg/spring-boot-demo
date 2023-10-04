@@ -5,6 +5,7 @@ import com.triscit.flow.service.FlowTask;
 import com.triscit.flow.service.FlowTaskQuery;
 import com.triscit.flow.vo.TaskVo;
 import com.triscit.util.PojoUtil;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.flowable.engine.impl.cmd.AddMultiInstanceExecutionCmd;
 import org.flowable.engine.impl.cmd.DeleteMultiInstanceExecutionCmd;
@@ -29,9 +30,9 @@ public class FlowInstanceImpl extends ServiceFactory implements FlowInstance {
 
     protected static Logger logger = LoggerFactory.getLogger(FlowInstanceImpl.class);
 
-    @Autowired
+    @Resource
     private FlowTask flowTask;
-    @Autowired
+    @Resource
     private FlowTaskQuery flowTaskQuery;
 
     @Override

@@ -4,6 +4,7 @@ import com.triscit.flow.service.FlowTask;
 import com.triscit.flow.service.FlowTaskQuery;
 import com.triscit.flow.vo.TaskVo;
 import com.triscit.util.PojoUtil;
+import jakarta.annotation.Resource;
 import org.flowable.engine.task.Comment;
 import org.flowable.task.api.Task;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ import java.util.Map;
 @Service
 public class FlowTaskImpl extends ServiceFactory implements FlowTask {
 
-    @Autowired
+    @Resource
     private FlowTaskQuery flowTaskQuery;
 
     protected static Logger logger = LoggerFactory.getLogger(FlowTaskImpl.class);

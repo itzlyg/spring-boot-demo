@@ -1,5 +1,6 @@
 package com.triscit.flow.service.impl;
 
+import jakarta.annotation.Resource;
 import org.flowable.engine.FormService;
 import org.flowable.engine.HistoryService;
 import org.flowable.engine.IdentityService;
@@ -21,28 +22,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class ServiceFactory {
 
-    @Autowired
+    @Resource
     protected RepositoryService repositoryService;
 
-    @Autowired
+    @Resource
     protected RuntimeService runtimeService;
 
-    @Autowired
+    @Resource
     protected IdentityService identityService;
 
-    @Autowired
+    @Resource
     protected TaskService taskService;
 
-    @Autowired
+    @Resource
     protected FormService formService;
 
-    @Autowired
+    @Resource
     protected HistoryService historyService;
 
-    @Autowired
+    @Resource
     protected ManagementService managementService;
 
-    @Autowired
+    @Resource
     @Qualifier("processEngine")
     protected ProcessEngine processEngine;
 

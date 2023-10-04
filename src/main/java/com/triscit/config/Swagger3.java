@@ -23,10 +23,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Swagger3 {
 
-    private String securitySchemeName = "Authorization OAuth2";
-
-    private String authorizeUri = "https://springdoc.org";
-
     @Bean
     public OperationCustomizer customize() {
         return (o, h) -> o.addParametersItem(
@@ -38,7 +34,9 @@ public class Swagger3 {
     }
 
     @Bean
-    public OpenAPI springShopOpenAPI() {
+    public OpenAPI springShopOpenApi() {
+        String authorizeUri = "https://springdoc.org";
+        String securitySchemeName = "Authorization OAuth2";
         return new OpenAPI()
                 .info(new Info().title("Swagger API")
                         .description("swagger api 信息")
