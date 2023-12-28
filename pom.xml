@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.4</version>
+		<version>3.2.0</version>
 	</parent>
 
 	<properties>
@@ -22,10 +22,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
 
-		<mybatis.plus.version>3.5.3</mybatis.plus.version>
-		<transmittable.version>2.14.2</transmittable.version>
+		<mybatis.plus.version>3.5.4</mybatis.plus.version>
+		<transmittable.version>2.14.5</transmittable.version>
 		<flowable.version>7.0.0</flowable.version>
-		<springdoc.version>2.2.0</springdoc.version>
+		<springdoc.version>2.3.0</springdoc.version>
 		<commons.collections4.version>4.4</commons.collections4.version>
 	</properties>
 
